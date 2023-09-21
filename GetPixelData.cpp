@@ -13,7 +13,7 @@ void GetPixelData::copyAlpha(std::shared_ptr<FIBITMAP> image,std::shared_ptr<FIB
 
 	FreeImage_SetTransparent(alpha.get(), true);
 
-	//œŽZ‚ð‰ñ”ð‚·‚é
+	//œŽZ‚ð‰ñ”ð‚·‚é‚ ‚ ‚ 
 	RGBQUAD alpha_color = {0};
 	for (i = 0; i < height; i++)
 	{
