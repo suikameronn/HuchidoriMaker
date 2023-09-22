@@ -5,12 +5,12 @@
 
 GetPixelData::GetPixelData(int w, int h): width(w),height(h)
 {
-	pColor[(width - 2) * (height - 2)];
 }
 
-void GetPixelData::copyAlpha(std::shared_ptr<FIBITMAP> image,std::shared_ptr<FIBITMAP> alpha)
+void GetPixelData::copyAlpha(std::shared_ptr<FIBITMAP> image,std::shared_ptr<unsigned char[]> alpha)
 {
 	int i,j;
+	RGBQUAD color;
 
 	//œZ‚ğ‰ñ”ğ‚·‚é
 	for (i = 0; i < height; i++)
@@ -54,7 +54,6 @@ void GetPixelData::copyAlpha(std::shared_ptr<FIBITMAP> image,std::shared_ptr<FIB
 			*/
 
 			color = { (unsigned char)tmp,(unsigned char)tmp,(unsigned char)tmp,(unsigned char)tmp};
-			pColor[j + i * (width - 2)] = tmp;
 		}
 	}
 }
