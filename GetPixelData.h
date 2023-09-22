@@ -6,9 +6,11 @@ class GetPixelData
 {
 private:
 
-	RGBQUAD color = {};
+	RGBQUAD color;
 
 	const int width, height;
+
+	unsigned char pColor[];
 
 public:
 	GetPixelData(const int w,const int h);
