@@ -24,8 +24,10 @@ int main(void)
         RGBQUAD* color;
         GetPixelData pixels(FreeImage_GetWidth(image.get()), FreeImage_GetHeight(image.get()));
 
-        std::shared_ptr<FIBITMAP> alpha = std::shared_ptr<FIBITMAP>(FreeImage_Allocate(pixels.get_Width(), pixels.get_Height(), FreeImage_GetBPP(image.get())));
-        pixels.copyAlpha(image, alpha);
+        std::shared_ptr<FIBITMAP> alpha = std::shared_ptr<FIBITMAP>(FreeImage_Allocate(pixels.getWidth(), pixels.getHeight(), FreeImage_GetBPP(image.get())));
+        std::shared_ptr<unsigned char[]> alphaDegree(new unsigned char[(pixels.getWidth() - 2) * (pixels.getHeight() - 2)]);
+        pixels.copyAlpha(image, alpha,alphaDegree);
+
 
         if (!FreeImage_Save(FIF_PNG, alpha.get(), "convert.png", PNG_DEFAULT))
         {
