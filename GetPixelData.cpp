@@ -7,9 +7,9 @@ GetPixelData::GetPixelData(int w, int h): width(w),height(h)
 {
 }
 
-void GetPixelData::copyAlpha(std::shared_ptr<FIBITMAP> image,std::shared_ptr<FIBITMAP> alpha,std::shared_ptr<unsigned char[]> alphaDegree)
+void GetPixelData::copyAlpha(std::shared_ptr<FIBITMAP> image, std::shared_ptr<FIBITMAP> alpha, std::shared_ptr<unsigned char[]> alphaDegree)
 {
-	int i,j;
+	int i, j;
 	RGBQUAD color;
 
 	//œZ‚ğ‰ñ”ğ‚·‚é
