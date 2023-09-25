@@ -2,10 +2,11 @@
 #include<iostream>
 #include"FreeImage.h"
 
-std::shared_ptr<FIBITMAP> ImageProcess::Huchidori(std::shared_ptr<FIBITMAP> image
-	,std::shared_ptr<unsigned char[]> alphaDegree,std::shared_ptr<FIBITMAP> output,int width,int height,RGBQUAD color)
+void ImageProcess::Huchidori(std::shared_ptr<FIBITMAP> image
+	,std::shared_ptr<unsigned char[]> alphaDegree,std::shared_ptr<FIBITMAP> output,int width,int height)
 {
 	int i, j, k, m;
+	RGBQUAD color;
 	RGBQUAD huchi = { 255,255,255,255 };
 
 	for (i = 0; i < width - 2; i++)

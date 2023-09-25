@@ -11,7 +11,7 @@ private:
 public:
 	GetPixelData(const int w,const int h);
 
-	void copyAlpha(std::shared_ptr<FIBITMAP> image, std::shared_ptr<FIBITMAP> alpha, std::shared_ptr<unsigned char[]> alphaDegree);
+	void copyAlpha(std::shared_ptr<FIBITMAP> image, std::shared_ptr<unsigned char[]> alphaDegree);
 
 	int getWidth();
 	int getHeight();
