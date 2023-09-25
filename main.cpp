@@ -34,10 +34,14 @@ int main(void)
             , FreeImage_GetBPP(image.get())), FreeImage_Unload);
         ip.Huchidori(image, alphaDegree, output, pixels.getWidth(), pixels.getHeight());
 
+        /*
         if (!FreeImage_Save(FIF_PNG, output.get(), "convert.png", PNG_DEFAULT))
         {
             throw std::runtime_error("Save failed");
         }
+        */
+
+        io.GenericWriter(output.get(), "convert.png", 0);
     }
     catch (std::exception& e)
     {

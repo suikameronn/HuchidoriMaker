@@ -9,11 +9,17 @@ void ImageProcess::Huchidori(std::shared_ptr<FIBITMAP> image
 	RGBQUAD color;
 	RGBQUAD huchi = { 255,255,255,255 };
 
-	for (i = 0; i < width - 2; i++)
+	for (i = 0; i < width * height; i++)
 	{
-		for (j = 0; j < height - 2; j++)
+		FreeImage_GetPixelColor(image.get(), i % width, i / width, &color);
+		FreeImage_SetPixelColor(output.get(), i % width, i / width, &color);
+	}
+
+	for (i = 0; i < height - 2; i++)
+	{
+		for (j = 0; j < width - 2; j++)
 		{
-			if (alphaDegree[i] == 1)
+			if (alphaDegree[j + i * (width - 2)] == 1)
 			{
 				FreeImage_GetPixelColor(image.get(), j + 1 + 1, i, &color);
 				if (color.rgbReserved == 0)
