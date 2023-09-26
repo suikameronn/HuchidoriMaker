@@ -122,12 +122,12 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(SolutionDir)include</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Users\sugiyama\source\repos\HuchidoriMaker\include</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>$(SolutionDir)lib\Debug</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>C:\Users\sugiyama\source\repos\HuchidoriMaker\lib\Debug</AdditionalLibraryDirectories>
       <AdditionalDependencies>FreeImage.lib</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
