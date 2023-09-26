@@ -1,6 +1,4 @@
 #pragma once
-#include <iostream>
-#include "FreeImage.h"
 #include "GetPixelData.h"
 
 GetPixelData::GetPixelData(int w, int h): width(w),height(h)

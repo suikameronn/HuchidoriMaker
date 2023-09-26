@@ -1,6 +1,4 @@
 #pragma once
-#include <iostream>
-#include "FreeImage.h"
 #include "IO.h"
 
 FIBITMAP* IO::GenericLoader(const char* Path, int flag) {

@@ -1,6 +1,4 @@
 #include"ImageProcess.h"
-#include<iostream>
-#include"FreeImage.h"
 
 void ImageProcess::Huchidori(std::shared_ptr<FIBITMAP> image
 	,std::shared_ptr<unsigned char[]> alphaDegree,std::shared_ptr<FIBITMAP> output,int width,int height)
@@ -21,16 +19,16 @@ void ImageProcess::Huchidori(std::shared_ptr<FIBITMAP> image
 		{
 			if (alphaDegree[j + i * (width - 2)] == 1)
 			{
-				FreeImage_GetPixelColor(image.get(), j + 1 + 1, i, &color);
+				FreeImage_GetPixelColor(image.get(), j + 2, i, &color);
 				if (color.rgbReserved == 0)
 				{
-					FreeImage_SetPixelColor(output.get(), j + 1 + 1, i, &huchi);
+					FreeImage_SetPixelColor(output.get(), j + 2, i, &huchi);
 				}
 
-				FreeImage_GetPixelColor(image.get(), j + 1 - 1, i, &color);
+				FreeImage_GetPixelColor(image.get(), j, i, &color);
 				if (color.rgbReserved == 0)
 				{
-					FreeImage_SetPixelColor(output.get(), j + 1 - 1, i + 1, &huchi);
+					FreeImage_SetPixelColor(output.get(), j, i, &huchi);
 				}
 
 				FreeImage_GetPixelColor(image.get(), j + 1 , i - 1, &color);
@@ -39,10 +37,10 @@ void ImageProcess::Huchidori(std::shared_ptr<FIBITMAP> image
 					FreeImage_SetPixelColor(output.get(), j + 1, i - 1, &huchi);
 				}
 
-				FreeImage_GetPixelColor(image.get(), j + 1, i + 1, &color);
+				FreeImage_GetPixelColor(image.get(), j + 1, i + 2, &color);
 				if (color.rgbReserved == 0)
 				{
-					FreeImage_SetPixelColor(output.get(), j + 1, i + 1, &huchi);
+					FreeImage_SetPixelColor(output.get(), j + 1, i + 2, &huchi);
 				}
 			}
 		}
