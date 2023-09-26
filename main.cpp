@@ -1,4 +1,5 @@
 #include<iostream>
+#include<vector>
 #include"FreeImage.h"
 #include"IO.h"
 #include"GetPixelData.h"
@@ -26,13 +27,13 @@ int main(void)
         GetPixelData pixels(FreeImage_GetWidth(image.get()), FreeImage_GetHeight(image.get()));
 
         std::shared_ptr<FIBITMAP> alpha = std::shared_ptr<FIBITMAP>(FreeImage_Allocate(pixels.getWidth(), pixels.getHeight(), FreeImage_GetBPP(image.get())),FreeImage_Unload);
-        std::shared_ptr<unsigned char[]> alphaDegree(new unsigned char[(pixels.getWidth() - 2) * (pixels.getHeight() - 2)]);
-        pixels.copyAlpha(image, alphaDegree);
+        std::vector<int> edgeLoc(pixels.getWidth() * pixels.getHeight());
+        pixels.copyAlpha(image, edgeLoc.begin());
 
         ImageProcess ip;
         std::shared_ptr<FIBITMAP> output = std::shared_ptr<FIBITMAP>(FreeImage_Allocate(pixels.getWidth(), pixels.getHeight()
             , FreeImage_GetBPP(image.get())), FreeImage_Unload);
-        ip.Huchidori(image, alphaDegree, output, pixels.getWidth(), pixels.getHeight());
+        ip.Huchidori(image, edgeLoc.begin(), output, pixels.getWidth(), pixels.getHeight());
 
         io.GenericWriter(output.get(), "convert.png", 0);
     }

@@ -1,7 +1,7 @@
 #include"ImageProcess.h"
 
 void ImageProcess::Huchidori(std::shared_ptr<FIBITMAP> image
-	,std::shared_ptr<unsigned char[]> alphaDegree,std::shared_ptr<FIBITMAP> output,int width,int height)
+	,std::vector<int>::iterator begin, std::vector<int>::iterator end,std::shared_ptr<FIBITMAP> output,int width,int height)
 {
 	int i, j, k, m;
 	RGBQUAD color;
@@ -13,36 +13,8 @@ void ImageProcess::Huchidori(std::shared_ptr<FIBITMAP> image
 		FreeImage_SetPixelColor(output.get(), i % width, i / width, &color);
 	}
 
-	for (i = 0; i < height - 2; i++)
+	for (; begin != end; begin++)
 	{
-		for (j = 0; j < width - 2; j++)
-		{
-			if (alphaDegree[j + i * (width - 2)] == 1)
-			{
-				FreeImage_GetPixelColor(image.get(), j + 2, i, &color);
-				if (color.rgbReserved == 0)
-				{
-					FreeImage_SetPixelColor(output.get(), j + 2, i, &huchi);
-				}
-
-				FreeImage_GetPixelColor(image.get(), j, i, &color);
-				if (color.rgbReserved == 0)
-				{
-					FreeImage_SetPixelColor(output.get(), j, i, &huchi);
-				}
-
-				FreeImage_GetPixelColor(image.get(), j + 1 , i - 1, &color);
-				if (color.rgbReserved == 0)
-				{
-					FreeImage_SetPixelColor(output.get(), j + 1, i - 1, &huchi);
-				}
-
-				FreeImage_GetPixelColor(image.get(), j + 1, i + 2, &color);
-				if (color.rgbReserved == 0)
-				{
-					FreeImage_SetPixelColor(output.get(), j + 1, i + 2, &huchi);
-				}
-			}
-		}
+		//αチェックのコード
 	}
 }
