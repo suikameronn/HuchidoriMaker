@@ -26,16 +26,13 @@ int main(void)
         RGBQUAD* color;
         GetPixelData pixels(FreeImage_GetWidth(image.get()), FreeImage_GetHeight(image.get()));
 
-        std::shared_ptr<FIBITMAP> alpha = std::shared_ptr<FIBITMAP>(FreeImage_Allocate(pixels.getWidth(), pixels.getHeight(), FreeImage_GetBPP(image.get())),FreeImage_Unload);
         std::vector<int> edgeLoc(pixels.getWidth() * pixels.getHeight());
-        pixels.copyAlpha(image, edgeLoc.begin());
+        pixels.copyAlpha(image, edgeLoc);
 
         ImageProcess ip;
-        std::shared_ptr<FIBITMAP> output = std::shared_ptr<FIBITMAP>(FreeImage_Allocate(pixels.getWidth(), pixels.getHeight()
-            , FreeImage_GetBPP(image.get())), FreeImage_Unload);
-        ip.Huchidori(image, edgeLoc.begin(), output, pixels.getWidth(), pixels.getHeight());
+        ip.Huchidori(image, edgeLoc);
 
-        io.GenericWriter(output.get(), "convert.png", 0);
+        io.GenericWriter(image.get(), "convert.png", 0);
     }
     catch (std::exception& e)
     {

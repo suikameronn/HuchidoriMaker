@@ -6,9 +6,8 @@
 class ImageProcess
 {
 private:
+	std::vector<int>::iterator begin;
 
 public:
-	void Huchidori(std::shared_ptr<FIBITMAP> image
-		, std::vector<int>::iterator begin, std::vector<int>::iterator end, std::shared_ptr<FIBITMAP> output
-			,int width,int height);
+	void Huchidori(std::shared_ptr<FIBITMAP> image, std::vector<int> edgeLoc);
 };

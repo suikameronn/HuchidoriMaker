@@ -5,19 +5,12 @@ GetPixelData::GetPixelData(int w, int h): width(w),height(h)
 {
 }
 
-void GetPixelData::copyAlpha(std::shared_ptr<FIBITMAP> image, std::vector<int>::iterator itr)
+void GetPixelData::copyAlpha(std::shared_ptr<FIBITMAP> image, std::vector<int> &edgeLoc)
 {
 	int i, j;
 	RGBQUAD color;
 
-	//œZ‚ğ‰ñ”ğ‚·‚é
-	for (i = 0; i < height; i++)
-	{
-		for (j = 0; j < width; j++)
-		{
-			FreeImage_GetPixelColor(image.get(), j, i, &color);
-		}
-	}
+	itr = edgeLoc.begin();
 
 	int tmp;
 	for (i = 1; i < height - 1; i++)
@@ -45,6 +38,13 @@ void GetPixelData::copyAlpha(std::shared_ptr<FIBITMAP> image, std::vector<int>::
 			}
 		}
 	}
+
+	//int f = edgeLoc.capacity();
+	//printf("%d\n", f);
+	edgeLoc.erase(itr, edgeLoc.end());//“úX‚Ìƒƒ‚’ std::vector‚ğQÆ
+	//f = edgeLoc.capacity();
+	//printf("%d\n", f);
+	
 }
 
 int GetPixelData::getWidth()
