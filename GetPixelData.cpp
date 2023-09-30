@@ -8,9 +8,6 @@ GetPixelData::GetPixelData(int w, int h): width(w),height(h)
 void GetPixelData::copyAlpha(std::shared_ptr<FIBITMAP> image, std::vector<int> &edgeLoc)
 {
 	int i, j;
-	RGBQUAD color;
-
-	itr = edgeLoc.begin();
 
 	int tmp;
 	for (i = 1; i < height - 1; i++)
@@ -33,18 +30,13 @@ void GetPixelData::copyAlpha(std::shared_ptr<FIBITMAP> image, std::vector<int> &
 
 			if (tmp != 0)
 			{
-				*itr = j + (width - 2) * i;
-				itr++;
+				edgeLoc.push_back(j + i * width);
 			}
 		}
 	}
 
-	//int f = edgeLoc.capacity();
-	//printf("%d\n", f);
-	edgeLoc.erase(itr, edgeLoc.end());//“úX‚Ìƒƒ‚’ std::vector‚ğQÆ
-	//f = edgeLoc.capacity();
-	//printf("%d\n", f);
-	
+	edgeLoc.shrink_to_fit();
+
 }
 
 int GetPixelData::getWidth()

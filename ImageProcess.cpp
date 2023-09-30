@@ -1,16 +1,12 @@
 #include"ImageProcess.h"
 
-void ImageProcess::Huchidori(std::shared_ptr<FIBITMAP> image,std::vector<int> edgeLoc)
+void ImageProcess::Huchidori(std::shared_ptr<FIBITMAP> image,std::vector<int> &edgeLoc,int width,int height)
 {
-	RGBQUAD color;
-	RGBQUAD huchi = { 255,255,255,255 };
-	
+	RGBQUAD huchi = { 255, 255, 255,255};
 
-	for (; begin != edgeLoc.end(); begin++)
+	x = edgeLoc.begin();
+	for (; x != edgeLoc.end(); ++x)
 	{
-		if (*begin != -1)
-		{
-			//printf("%d\n", *begin);
-		}
+		FreeImage_SetPixelColor(image.get(), *x % width, *x / width, &huchi);
 	}
 }

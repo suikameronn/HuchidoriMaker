@@ -9,7 +9,10 @@ private:
 
 	const int width, height;
 
-	std::vector<int>::iterator itr;
+	RGBQUAD color;
+
+	std::vector<int>::iterator begin;
+	std::vector<int>::iterator end;
 
 public:
 	GetPixelData(const int w,const int h);

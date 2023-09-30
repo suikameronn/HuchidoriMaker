@@ -30,7 +30,7 @@ int main(void)
         pixels.copyAlpha(image, edgeLoc);
 
         ImageProcess ip;
-        ip.Huchidori(image, edgeLoc);
+        ip.Huchidori(image, edgeLoc, pixels.getWidth(), pixels.getHeight());
 
         io.GenericWriter(image.get(), "convert.png", 0);
     }
