@@ -5,7 +5,7 @@ GetPixelData::GetPixelData(int w, int h): width(w),height(h)
 {
 }
 
-void GetPixelData::copyAlpha(std::shared_ptr<FIBITMAP> image, std::vector<int> &edgeLoc)
+void GetPixelData::copyAlpha(FIBITMAP* image, std::vector<int> &edgeLoc)
 {
 	int i, j;
 
@@ -16,16 +16,25 @@ void GetPixelData::copyAlpha(std::shared_ptr<FIBITMAP> image, std::vector<int> &
 		{
 			tmp = 0;
 
-			FreeImage_GetPixelColor(image.get(), j, i, &color);
-			tmp -= color.rgbReserved * 4;
+			FreeImage_GetPixelColor(image, j, i, &color);
+			tmp -= color.rgbReserved * 8;
 
-			FreeImage_GetPixelColor(image.get(), j + 1, i, &color);
+			FreeImage_GetPixelColor(image, j + 1, i, &color);
 			tmp += color.rgbReserved;
-			FreeImage_GetPixelColor(image.get(), j - 1, i, &color);
+			FreeImage_GetPixelColor(image, j - 1, i, &color);
 			tmp += color.rgbReserved;
-			FreeImage_GetPixelColor(image.get(), j, i + 1, &color);
+			FreeImage_GetPixelColor(image, j, i + 1, &color);
 			tmp += color.rgbReserved;
-			FreeImage_GetPixelColor(image.get(), j, i - 1, &color);
+			FreeImage_GetPixelColor(image, j, i - 1, &color);
+			tmp += color.rgbReserved;
+
+			FreeImage_GetPixelColor(image, j + 1, i - 1, &color);
+			tmp += color.rgbReserved;
+			FreeImage_GetPixelColor(image, j - 1, i - 1, &color);
+			tmp += color.rgbReserved;
+			FreeImage_GetPixelColor(image, j + 1, i + 1, &color);
+			tmp += color.rgbReserved;
+			FreeImage_GetPixelColor(image, j + 1, i - 1, &color);
 			tmp += color.rgbReserved;
 
 			if (tmp != 0)

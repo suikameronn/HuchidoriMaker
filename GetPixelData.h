@@ -17,7 +17,7 @@ private:
 public:
 	GetPixelData(const int w,const int h);
 
-	void copyAlpha(std::shared_ptr<FIBITMAP> image, std::vector<int> &edgeLoc);
+	void copyAlpha(FIBITMAP* image, std::vector<int> &edgeLoc);
 
 	int getWidth();
 	int getHeight();
