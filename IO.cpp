@@ -29,7 +29,7 @@ bool IO::GenericWriter(FIBITMAP* dib, const char* Path, int flag) {
 	if (dib) {
 		// try to guess the file format from the file extension
 		fif = FreeImage_GetFIFFromFilename(Path);
-		if (fif != FIF_UNKNOWN) {
+		if (fif == FIF_PNG) {
 			// check that the plugin has sufficient writing and export capabilities ...
 			WORD bpp = FreeImage_GetBPP(dib);
 			if (FreeImage_FIFSupportsWriting(fif) && FreeImage_FIFSupportsExportBPP(fif, bpp)) {
