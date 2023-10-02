@@ -45,6 +45,8 @@ void GetPixelData::copyAlpha(FIBITMAP* image, std::vector<int> &edgeLoc)
 		}
 	}
 
+	std::vector<int> r(width * height - count);
+	edgeLoc.erase(remove_if(edgeLoc.begin(), edgeLoc.end(), [](const int i) {return i == -1; }), edgeLoc.end());
 	edgeLoc.shrink_to_fit();
 
 }
