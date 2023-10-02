@@ -34,12 +34,12 @@ void GetPixelData::copyAlpha(FIBITMAP* image, std::vector<int> &edgeLoc)
 			tmp += color.rgbReserved;
 			FreeImage_GetPixelColor(image, j + 1, i + 1, &color);
 			tmp += color.rgbReserved;
-			FreeImage_GetPixelColor(image, j + 1, i - 1, &color);
+			FreeImage_GetPixelColor(image, j - 1, i + 1, &color);
 			tmp += color.rgbReserved;
 
 			if (tmp != 0)
 			{
-				edgeLoc.push_back(j + i * width);
+				edgeLoc[j + i * width];
 			}
 		}
 	}
