@@ -7,8 +7,6 @@
 #include"GetPixelData.h"
 #include"ImageProcess.h"
 
-#include<time.h>
-
 int main(void)
 {
     FreeImage_Initialise();
@@ -39,13 +37,8 @@ int main(void)
 
             GetPixelData pixels(FreeImage_GetWidth(image.get()), FreeImage_GetHeight(image.get()));
 
-            clock_t start = clock();    // スタート時間
-
             std::vector<int> edgeLoc(pixels.getWidth() * pixels.getHeight(),-1);
             pixels.copyAlpha(image.get(), edgeLoc);
-
-            clock_t end = clock();     // 終了時間
-            std::cout << "duration = " << (double)(end - start) / CLOCKS_PER_SEC << "sec.\n";
 
             ImageProcess ip;
             ip.Huchidori(image.get(), edgeLoc, pixels.getWidth(), pixels.getHeight());
@@ -70,14 +63,5 @@ int main(void)
         {
             break;
         }
-
-        std::cin.clear();
-        std::cin.ignore(1024, '\n');
     }
 }
-
-// エッジ抽出 0.06sec
-// // エッジ抽出 0.06sec
-// 縁取り 0.08sec
-// // 縁取り 0.009sec
-//全体で0.21sec
