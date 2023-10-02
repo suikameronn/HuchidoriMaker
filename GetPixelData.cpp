@@ -7,7 +7,7 @@ GetPixelData::GetPixelData(int w, int h): width(w),height(h)
 
 void GetPixelData::copyAlpha(FIBITMAP* image, std::vector<int> &edgeLoc)
 {
-	int i, j;
+	int i, j,count = 0;
 
 	int tmp;
 	for (i = 1; i < height - 1; i++)
@@ -39,7 +39,8 @@ void GetPixelData::copyAlpha(FIBITMAP* image, std::vector<int> &edgeLoc)
 
 			if (tmp != 0)
 			{
-				edgeLoc[j + i * width];
+				edgeLoc[count] = j + i * width;
+				count++;
 			}
 		}
 	}

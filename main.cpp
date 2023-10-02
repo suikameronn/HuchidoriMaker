@@ -39,8 +39,16 @@ int main(void)
 
             GetPixelData pixels(FreeImage_GetWidth(image.get()), FreeImage_GetHeight(image.get()));
 
-            std::vector<int> edgeLoc(pixels.getWidth() * pixels.getHeight());
+            std::vector<int> edgeLoc(pixels.getWidth() * pixels.getHeight(),-1);
             pixels.copyAlpha(image.get(), edgeLoc);
+
+            for (int i = 0; i < edgeLoc.size(); i++)
+            {
+                if (true)
+                {
+                    //std::cout << edgeLoc[i] << std::endl;
+                }
+            }
 
             ImageProcess ip;
             ip.Huchidori(image.get(), edgeLoc, pixels.getWidth(), pixels.getHeight());
