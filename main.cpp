@@ -37,13 +37,15 @@ int main(void)
 
             GetPixelData pixels(FreeImage_GetWidth(image.get()), FreeImage_GetHeight(image.get()));
 
+            std::shared_ptr<FIBITMAP> copy = std::shared_ptr<FIBITMAP>(FreeImage_Clone(image.get()));
+
             std::vector<int> edgeLoc(pixels.getWidth() * pixels.getHeight(),-1);
-            pixels.copyAlpha(image.get(), edgeLoc);
+            pixels.copyAlpha(copy.get(), edgeLoc);
 
             ImageProcess ip;
-            ip.Huchidori(image.get(), edgeLoc, pixels.getWidth(), pixels.getHeight());
+            ip.Huchidori(copy.get(), edgeLoc, pixels.getWidth(), pixels.getHeight());
 
-            if (!io.GenericWriter(image.get(), output, 0))
+            if (!io.GenericWriter(copy.get(), output, 0))
             {
                 throw std::runtime_error("Huchidori failed");
             }
