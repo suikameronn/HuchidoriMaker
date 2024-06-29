@@ -122,12 +122,12 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>C:\Users\sugiyama\source\repos\HuchidoriMaker\include</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Users\sugiyama\source\repos\HuchidoriMaker\include;C:\Users\sukai\Documents\HuchidoriMaker\include</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>C:\Users\sugiyama\source\repos\HuchidoriMaker\lib\Debug</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>C:\Users\sugiyama\source\repos\HuchidoriMaker\lib\Debug;C:\Users\sukai\Documents\HuchidoriMaker\lib</AdditionalLibraryDirectories>
       <AdditionalDependencies>FreeImage.lib</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
@@ -139,14 +139,14 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(SolutionDir)include</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)include;C:\Users\sukai\Documents\HuchidoriMaker\include</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>$(SolutionDir)lib\Debug</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>$(SolutionDir)lib\Debug;C:\Users\sukai\Documents\HuchidoriMaker\lib</AdditionalLibraryDirectories>
       <AdditionalDependencies>FreeImage.lib</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
